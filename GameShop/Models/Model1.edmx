@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="game_shop_webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="game_shop_webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="banner">
           <Key>
             <PropertyRef Name="id" />
@@ -108,6 +108,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <Property Name="permission" Type="int" />
           <Property Name="create_at" Type="date" />
           <Property Name="img_url" Type="varchar" MaxLength="510" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__order_pro__order__45F365D3">
           <End Role="orders" Type="Self.orders" Multiplicity="1" />
@@ -207,8 +208,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
             <End Role="product_img_url" EntitySet="product_img_url" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="game_shop_webModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -310,6 +310,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <Property Name="create_at" Type="DateTime" Precision="0" />
           <Property Name="img_url" Type="String" MaxLength="510" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="orders" Relationship="Self.FK__orders__users_id__4316F928" FromRole="users" ToRole="orders" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="order_product">
           <Key>
@@ -506,6 +507,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="game_shop_webModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="phone" ColumnName="phone" />

@@ -11,7 +11,8 @@ namespace GameShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -43,5 +44,8 @@ namespace GameShop.Models
         public virtual ICollection<order_product> order_product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product_img_url> product_img_url { get; set; }
+        public HttpPostedFileBase ImageUpload { get; set; }
+
+        public HttpPostedFileBase[] multiImg { get; set; }
     }
 }

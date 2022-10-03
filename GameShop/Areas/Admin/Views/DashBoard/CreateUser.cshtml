@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "CreateUser";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    if (Session["userName"] == null)
+    {
+        Response.Redirect("~/Admin/Login/Index");
+    }
 }
 
 <h2>CreateUser</h2>

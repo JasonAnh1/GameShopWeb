@@ -15,7 +15,25 @@ namespace GameShop.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult Register ()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register (user user)
+        {
+         
+                user.permission = 0;        
+                user.create_at = DateTime.Now;
+                db.users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index", "DashBoard");
+      /*      }
 
+            return RedirectToAction("Register");*/
+        }
         [HttpPost]
         public ActionResult Autherize(GameShop.Models.user userModel)
         {
@@ -26,6 +44,7 @@ namespace GameShop.Areas.Admin.Controllers
             {
                 userModel.LoginErrorMessage = "Wrong username or password";
                 return View("Index",userModel);
+                
             }
             if(userDetail.permission != 1)
             {
@@ -35,8 +54,17 @@ namespace GameShop.Areas.Admin.Controllers
             else
             {
                 Session["userName"] = userDetail.name;
+                Session["userId"] = userDetail.id;
+                Session["avatarUrl"] = userDetail.img_url;
                 return RedirectToAction("Index", "DashBoard");
             }
+        }
+        public ActionResult LogOut()
+        {
+            Session["userName"] = null;
+            Session["userId"] =  null;
+            Session["avatarUrl"] = null;
+            return RedirectToAction("Index");
         }
     }
 }

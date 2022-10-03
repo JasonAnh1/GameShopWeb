@@ -11,7 +11,8 @@ namespace GameShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class banner
     {
         public int id { get; set; }
@@ -21,5 +22,7 @@ namespace GameShop.Models
         public Nullable<bool> deleted { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime update_at { get; set; }
+
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }
