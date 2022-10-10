@@ -46,6 +46,12 @@ namespace GameShop.Areas.Admin.Controllers
                 return View("Index",userModel);
                 
             }
+            if(userDetail.permission == 0)
+            {
+                // lay thong tin khach hang tai day
+                Session["norUser"] = userDetail;
+                return RedirectToAction("Index", "Index", new {area = ""});
+            }
             if(userDetail.permission != 1)
             {
                 userModel.LoginErrorMessage = "You dont have permission";
@@ -66,5 +72,6 @@ namespace GameShop.Areas.Admin.Controllers
             Session["avatarUrl"] = null;
             return RedirectToAction("Index");
         }
+       
     }
 }
