@@ -18,7 +18,23 @@ namespace GameShop.Controllers
             banner.bannerList = db.banners.Take(4).OrderByDescending(n => n.create_at).Skip(1).ToList();
             banner.productList = db.products.Take(8).OrderByDescending(n => n.create_at).ToList();
             banner.categoryList = db.categories.ToList();
+            if(Session["listCart"] != null)
+            {
+                List<product> list = (List<product>)Session["listCart"];
+                banner.numberOfProcduct = list.Count();
+            }
             return View(banner);
+        }
+        public PartialViewResult cart()
+        {
+            ViewBag.number = 0;
+            if (Session["listCart"] != null)
+            {
+
+                List<product> list = (List<product>)Session["listCart"];
+                ViewBag.number = list.Count();
+            }
+            return PartialView();
         }
     }
 }

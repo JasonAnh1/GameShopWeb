@@ -11,5 +11,7 @@ namespace GameShop.Models
         public banner banner { get; set; }
         public List<product> productList { get; set; }
         public List<category> categoryList { get; set; }
+
+        public int numberOfProcduct { get; set; }
     }
 }
