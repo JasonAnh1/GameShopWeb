@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -80,14 +81,44 @@ namespace GameShop.Controllers
             }
             return View(cartR);
         }
+        private readonly Random _random = new Random();
+        public string RandomString(int size, bool lowerCase = false)
+        {
+            var builder = new StringBuilder(size);
+
+            // Unicode/ASCII Letters are divided into two blocks
+            // (Letters 65–90 / 97–122):
+            // The first group containing the uppercase letters and
+            // the second group containing the lowercase.  
+
+            // char is a single Unicode character  
+            char offset = lowerCase ? 'a' : 'A';
+            const int lettersOffset = 26; // A...Z or a..z: length=26  
+
+            for (var i = 0; i < size; i++)
+            {
+                var @char = (char)_random.Next(offset, offset + lettersOffset);
+                builder.Append(@char);
+            }
+
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
         [HttpPost]
         public ActionResult CheckOut2(string email,int userId )
         {
+
             order orderr = new order();
             orderr.email = email;
             orderr.users_id = userId;
-            order orderFin =  db.orders.Add(orderr);
-           List<product> list = new List<product>();
+            orderr.create_at = DateTime.Now;
+            do
+            {
+                orderr.code = RandomString(8, false);
+
+            } while (db.orders.Where(n=>n.code.Equals(orderr.code)).SingleOrDefault()!=null);
+           
+            order finOrder = db.orders.Add(orderr);
+            List<product> list = new List<product>();
             if (Session["listCart"] != null)
             {
                 list = (List<product>)Session["listCart"];
@@ -101,7 +132,7 @@ namespace GameShop.Controllers
                     op.update_at = DateTime.Now;
                     op.quantity = item.quantity;
                     op.product_id = item.id;
-                    op.orders_id = orderFin.id;
+                    op.orders_id = finOrder.id;
                     listord.Add(op);
                 }
             }
