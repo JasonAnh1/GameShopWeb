@@ -39,18 +39,16 @@
           <Property Name="create_at" Type="date" />
           <Property Name="update_at" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="order_product">
           <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="orders_id" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="quantity" Type="int" />
           <Property Name="create_at" Type="date" />
           <Property Name="update_at" Type="date" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="orders_id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="orders">
           <Key>
@@ -110,7 +108,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <Property Name="img_url" Type="varchar" MaxLength="510" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__order_pro__order__45F365D3">
+        <Association Name="FK__order_pro__order__4AB81AF0">
           <End Role="orders" Type="Self.orders" Multiplicity="1" />
           <End Role="order_product" Type="Self.order_product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +120,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_pro__produ__44FF419A">
+        <Association Name="FK__order_pro__produ__4BAC3F29">
           <End Role="product" Type="Self.product" Multiplicity="1" />
           <End Role="order_product" Type="Self.order_product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,7 +132,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__users_id__4316F928">
+        <Association Name="FK__orders__users_id__4CA06362">
           <End Role="users" Type="Self.users" Multiplicity="1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +144,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product__categor__3E52440B">
+        <Association Name="FK__product__categor__4D94879B">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
           <End Role="product" Type="Self.product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,32 +172,24 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="blog" EntityType="Self.blog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_product" EntityType="Self.order_product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_img_url" EntityType="Self.product_img_url" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="order_product" EntityType="Self.order_product" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [order_product].[quantity] AS [quantity], 
-    [order_product].[create_at] AS [create_at], 
-    [order_product].[update_at] AS [update_at], 
-    [order_product].[product_id] AS [product_id], 
-    [order_product].[orders_id] AS [orders_id]
-    FROM [dbo].[order_product] AS [order_product]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__order_pro__order__45F365D3" Association="Self.FK__order_pro__order__45F365D3">
+          <AssociationSet Name="FK__order_pro__order__4AB81AF0" Association="Self.FK__order_pro__order__4AB81AF0">
             <End Role="orders" EntitySet="orders" />
             <End Role="order_product" EntitySet="order_product" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_pro__produ__44FF419A" Association="Self.FK__order_pro__produ__44FF419A">
+          <AssociationSet Name="FK__order_pro__produ__4BAC3F29" Association="Self.FK__order_pro__produ__4BAC3F29">
             <End Role="product" EntitySet="product" />
             <End Role="order_product" EntitySet="order_product" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__users_id__4316F928" Association="Self.FK__orders__users_id__4316F928">
+          <AssociationSet Name="FK__orders__users_id__4CA06362" Association="Self.FK__orders__users_id__4CA06362">
             <End Role="users" EntitySet="users" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__product__categor__3E52440B" Association="Self.FK__product__categor__3E52440B">
+          <AssociationSet Name="FK__product__categor__4D94879B" Association="Self.FK__product__categor__4D94879B">
             <End Role="category" EntitySet="category" />
             <End Role="product" EntitySet="product" />
           </AssociationSet>
@@ -314,8 +304,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
         </EntityType>
         <EntityType Name="order_product">
           <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="orders_id" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="quantity" Type="Int32" />
           <Property Name="create_at" Type="DateTime" Precision="0" />
@@ -324,6 +313,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <Property Name="orders_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="order" Relationship="Self.FK__order_pro__order__45F365D3" FromRole="order_product" ToRole="orders" />
           <NavigationProperty Name="product" Relationship="Self.FK__order_pro__produ__44FF419A" FromRole="order_product" ToRole="product" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK__product__categor__3E52440B">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
@@ -523,6 +513,7 @@ warning 6002: The table/view 'game_shop_web.dbo.order_product' does not have a p
           <EntitySetMapping Name="order_product">
             <EntityTypeMapping TypeName="game_shop_webModel.order_product">
               <MappingFragment StoreEntitySet="order_product">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="create_at" ColumnName="create_at" />
                 <ScalarProperty Name="update_at" ColumnName="update_at" />
