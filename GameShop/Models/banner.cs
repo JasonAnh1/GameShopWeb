@@ -22,7 +22,6 @@ namespace GameShop.Models
         public Nullable<bool> deleted { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime update_at { get; set; }
-
         public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

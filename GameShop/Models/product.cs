@@ -21,7 +21,7 @@ namespace GameShop.Models
             this.order_product = new HashSet<order_product>();
             this.product_img_url = new HashSet<product_img_url>();
         }
-    
+
         public string name { get; set; }
         public Nullable<System.DateTime> updated_date { get; set; }
         public Nullable<int> status { get; set; }
@@ -38,7 +38,7 @@ namespace GameShop.Models
         public string avatar_url { get; set; }
         public Nullable<int> category_id { get; set; }
         public string create_user { get; set; }
-    
+
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_product> order_product { get; set; }

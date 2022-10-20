@@ -24,18 +24,19 @@ namespace GameShop.Models
             this.orders = new HashSet<order>();
             img_url = "~/Asset/admin/img/user.jpg";
         }
-    
-        public int id { get; set; }       [DisplayName("User name")]
+
+        public int id { get; set; }
+        [DisplayName("User name")]
         public string name { get; set; }
         public string phone { get; set; }
         [DataType(DataType.Password)]
-        public string password { get; set; } 
+        public string password { get; set; }
         public Nullable<System.DateTime> update_at { get; set; }
         public Nullable<bool> deleted { get; set; }
         public Nullable<int> permission { get; set; }
         public Nullable<System.DateTime> create_at { get; set; }
         public string img_url { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }
 

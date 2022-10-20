@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="~/Asset/user/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/Asset/user/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Asset/user/css/style.css" type="text/css">
+    
 </head>
 
 <body>
@@ -48,7 +49,7 @@
                     <div class="tip"> @Html.Action("cart", "index")</div>
                 </a>
             </li>
-           
+
         </ul>
         <div class="offcanvas__logo">
             <a href="@Url.Action("Index","Index")"><img src="~/Asset/user/img/images.png" alt="" width="200" height="600"></a>
@@ -75,7 +76,7 @@
                             <li class="active"><a href="@Url.Action("Index","Index")">Home</a></li>
                             <li><a href="#">Game</a></li>
                             <li><a href="#">App key</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="@Url.Action("Index","Shop")">Shop</a></li>
                             <li>
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -206,6 +207,26 @@
     <script src="~/Asset/user/js/owl.carousel.min.js"></script>
     <script src="~/Asset/user/js/jquery.nicescroll.min.js"></script>
     <script src="~/Asset/user/js/main.js"></script>
+    <script>
+        (function ($) {
+            var rangeSlider = $(".price-range"),
+                minamount = $("#minamount"),
+                maxamount = $("#maxamount"),
+                minPrice = rangeSlider.data('min'),
+                maxPrice = rangeSlider.data('max');
+            rangeSlider.slider({
+                range: true,
+                min: minPrice,
+                max: maxPrice,
+                values: [minPrice, maxPrice],
+                slide: function (event, ui) {
+                    minamount.val(ui.values[0]);
+                    maxamount.val(ui.values[1]);
+                }
+            });
+            minamount.val(rangeSlider.slider("values", 0));
+            maxamount.val(rangeSlider.slider("values", 1));
+    </script>      
 </body>
 
 </html>
