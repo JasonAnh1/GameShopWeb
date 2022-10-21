@@ -74,7 +74,7 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">@item.name</a></h6>
+                            <h6><a href="@Url.Action("DetailProducts", "Detail" ,new { @MaSP = item.id })">@item.name</a></h6>
                             <div class="rating">
                                 @for (int i = 1; i <= item.rate; i++)
                                 {

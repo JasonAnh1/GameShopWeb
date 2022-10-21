@@ -143,6 +143,7 @@
     <Compile Include="Areas\Admin\Controllers\products1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\Product_img_urlController.cs" />
     <Compile Include="Areas\Admin\Controllers\usersController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
@@ -505,6 +506,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Shared\Index_Layout.cshtml" />
+    <Content Include="Views\Detail\DetailProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
