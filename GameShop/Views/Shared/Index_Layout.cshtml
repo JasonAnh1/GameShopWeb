@@ -40,13 +40,13 @@
             <li>
                 <a href="#">
                     <span class="icon_heart_alt"></span>
-                    <div class="tip">2</div>
+                    <div class="tip">0</div>
                 </a>
             </li>
             <li>
                 <a href="@Url.Action("Cart","CheckOut")">
                     <span class="icon_bag_alt"></span>
-                    <div class="tip"> @Html.Action("cart", "index")</div>
+                    <div class="tip">@Html.Action("cart", "index")</div>
                 </a>
             </li>
 
@@ -81,12 +81,12 @@
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="@Url.Action("Cart","CheckOut")">Shop Cart</a></li>
+                                    <li><a href="@Url.Action("checkout","checkout")">Checkout</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="@Url.Action("Blog","Blog")">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -102,7 +102,7 @@
                             <li>
                                 <a href="#">
                                     <span class="icon_heart_alt"></span>
-                                    <div class="tip">2</div>
+                                    <div class="tip">0</div>
                                 </a>
                             </li>
                             <li>
@@ -174,7 +174,7 @@
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>
                         <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100004962016195"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-youtube-play"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>

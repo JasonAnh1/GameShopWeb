@@ -12,7 +12,8 @@ namespace GameShop.Controllers
         game_shop_webEntities db = new game_shop_webEntities();
         // GET: Index
         public ActionResult Index()
-        {   
+        {
+            
             IndexClass banner = new IndexClass();
             banner.banner = db.banners.Take(1).OrderByDescending(n => n.create_at).SingleOrDefault();
             banner.bannerList = db.banners.Take(4).OrderByDescending(n => n.create_at).Skip(1).ToList();

@@ -19,6 +19,7 @@ namespace GameShop.Models
         public Nullable<System.DateTime> update_at { get; set; }
         public int product_id { get; set; }
         public int orders_id { get; set; }
+        public int id { get; set; }
     
         public virtual order order { get; set; }
         public virtual product product { get; set; }
