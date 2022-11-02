@@ -54,9 +54,11 @@
                 <ul class="filter__controls">
                     <li class="active" data-filter="*">All</li>
                     @foreach (var item in Model.categoryList)
-                    {
-                        <li data-filter=".@item.name">@item.name</li>
-                    }
+                        {                          
+                            <li data-filter=".@item.name">@item.name</li>                           
+                        }
+
+                    
                 </ul>
             </div>
         </div>
